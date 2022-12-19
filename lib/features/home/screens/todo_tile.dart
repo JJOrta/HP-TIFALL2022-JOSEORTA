@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
@@ -14,6 +16,33 @@ class ToDoTile extends StatelessWidget {
     required this.onChanged,
     required this.deleteFunction,
   });
+
+  // NEW/UNTESTED CODE START
+  Map<String, dynamic> toMap() {
+    return {
+      'taskName': taskName,
+      'taskCompleted': taskCompleted,
+      'onChanged': onChanged,
+      'deleteFunction': deleteFunction,
+      // 'updateFunction': updateFunction,
+    };
+  }
+
+  factory ToDoTile.fromMap(Map<String, dynamic> map) {
+    return ToDoTile(
+      taskName: map['taskName'] ?? '',
+      taskCompleted: map['taskCompleted'] ?? '',
+      onChanged: map['onChanged'] ?? '',
+      deleteFunction: map['deleteFunction'],
+      // updateFunction: map['updateFunction']
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory ToDoTile.fromJson(String source) =>
+      ToDoTile.fromMap(json.decode(source));
+  // NEW/UNTESTED CODE END
 
   @override
   Widget build(BuildContext context) {

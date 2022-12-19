@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:llunkei_test_app/constants/utils.dart';
 import 'package:llunkei_test_app/features/home/screens/dialog_box.dart';
 import 'package:llunkei_test_app/features/home/screens/todo_tile.dart';
 
@@ -17,6 +18,19 @@ class _HomeScreenState extends State<HomeScreen> {
   // text controller
   final _controller = TextEditingController();
 
+  // NEW/UNTESTED CODE START
+  void aTDL({
+    required BuildContext context,
+    required String taskName,
+    required bool onChanged,
+    required BuildContext deleteFunction,
+  }) async {
+    try {} catch (e) {
+      showSnackBar(context, e.toString());
+    }
+  }
+
+  // NEW/UNTESTED CODE START
   // list of todo tasks
   List toDoList = [
     ["task 1", false],
